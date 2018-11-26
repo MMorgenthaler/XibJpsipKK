@@ -251,13 +251,24 @@ void binwiseDiff() {
 	//Write canvas to file
 	if(save) {
 		string c_name_str = "MmissDiff_per" + value_str;
+		string png_name_str = "histograms/" + c_name_str + ".png";
 		string file_name_str = "histograms/" + c_name_str + ".root";
 		const char* c_name = c_name_str.c_str();
+		const char* png_name = png_name_str.c_str();
 		const char* file_name = file_name_str.c_str();
-		TFile* file = new TFile(file_name,"Update");
+		TFile* file1 = new TFile(file_name,"Update");
+		TFile* file2 = new TFile("histograms/MmissDiff.root","Update");
 		c1-> Write(c_name);
-		file-> Close();
-		delete file;
+		file1-> Close();
+		file2-> Close();
+		delete file1;
+		delete file2;
+
+		gSystem->ProcessEvents();
+		TImage *img = TImage::Create();
+		img->FromPad(c1);
+		img->WriteImage(png_name);
+		delete img;
 	}
 }
 
