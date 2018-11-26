@@ -1,8 +1,8 @@
 threads 12
 
 Filter "mup_ProbNNmu>0.2 && mum_ProbNNmu>0.2 && Jpsi_M<3150 && Jpsi_M>3050 && p_ProbNNp*(1-p_ProbNNk)>0.2 && K1_ProbNNk>0. && K2_ProbNNk>0.1"\
-	  	"&& Xib_IPCHI2_OWNPV<15 && Xib_ENDVERTEX_CHI2<30 && Xib_LOKI_DIRA>0.9996 && Jpsi_PT+K1_PT+K2_PT+p_PT>5600 && Xib_DTF_chi2<30 && K1_IPCHI2_OWNPV>30"\
-		"&& K2_IPCHI2_OWNPV>30 && Xib_FDCHI2_OWNPV>1300 && Jpsi_FDCHI2_OWNPV>2000 && Jpsi_FDCHI2_ORIVX<5"
+	  	"&& Xib_IPCHI2_OWNPV<15 && Xib_ENDVERTEX_CHI2<30 && Xib_LOKI_DIRA>0.9996 && Jpsi_PT+K1_PT+K2_PT+p_PT>5600 && Xib_DTF_chi2<30"\ 
+		"&& K1_IPCHI2_OWNPV>30 && K2_IPCHI2_OWNPV>30 && Xib_FDCHI2_OWNPV>1300 && Jpsi_FDCHI2_OWNPV>2000 && Jpsi_FDCHI2_ORIVX<5"
 
 variables {
 	Xib_PE{
