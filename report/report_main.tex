@@ -1,0 +1,83 @@
+\documentclass[a4paper, 11 pt]{article}
+
+%language and font
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman,english]{babel}
+
+%language and font
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman,english]{babel}
+
+%style
+\usepackage{booktabs}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
+\usepackage{verbatim}
+\usepackage{chngcntr}
+\counterwithin{figure}{section}
+\usepackage[format=plain,labelfont={it},textfont=it]{caption}
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{subcaption}
+\usepackage[toc,page]{appendix}
+\usepackage{fancyhdr}
+\pagestyle{fancy}    
+	\fancyfoot{}                        
+	\fancyhf{}
+	\fancyhead[LE]{\rightmark}
+	\fancyhead[RO]{\leftmark}
+	\fancyfoot[LE,RO]{\bfseries\thepage}
+	\setlength{\headheight}{13.6pt}
+\bibliographystyle{unsrt}
+\usepackage{multirow}
+\usepackage{tabularx}
+
+%math tools
+\usepackage{siunitx}
+\usepackage{amsmath}
+	\numberwithin{equation}{section}
+	\numberwithin{table}{section}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{bbold}
+\usepackage{mathrsfs}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing}
+
+\newcommand{\S0}[0]{{S^0}}
+\newcommand{\Xibm}{{\Xi_b^-}}
+\newcommand{\Jpsi}{{J/\Psi}}
+\newcommand{\mum}{{\mu^-}}
+\newcommand{\mup}{{\mu^+}}
+\newcommand{\Km}{{K^-}}
+\newcommand{\XibmDecay}{{$\Xibm\to\Jpsi(\to\mup+\mum)+p+\Km+\Km$}}
+\newcommand{\HexaDecay}{{$\Xibm\to\Jpsi(\to\mup+\mum)+\overline{p}+\S0$}}
+
+%opening
+\title{Studies of Hexaquark missing mass approximation}
+\author{Maurice Morgenthaler}
+\date{\today}
+
+\begin{document}
+	\maketitle
+	\tableofcontents
+	
+	\include{report_intro}	
+	\include{report_data}
+	\include{report_compare_datasets}
+	\include{report_behavior}
+	%\include{conclusion}
+	\bibliography{report_references}
+	%https://arxiv.org/pdf/1803.10242.pdf
+	%https://link.springer.com/article/10.1023/A:1025702431127
+	
+\end{document}

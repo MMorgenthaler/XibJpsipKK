@@ -1,0 +1,187 @@
+threads 12
+
+Filter "mup_ProbNNmu>0.2 && mum_ProbNNmu>0.2 && Jpsi_M<3150 && Jpsi_M>3050 && p_ProbNNp*(1-p_ProbNNk)>0.2 && K1_ProbNNk>0. && K2_ProbNNk>0.1"\
+	  	"&& Xib_IPCHI2_OWNPV<15 && Xib_ENDVERTEX_CHI2<30 && Xib_LOKI_DIRA>0.9996 && Jpsi_PT+K1_PT+K2_PT+p_PT>5600 && Xib_DTF_chi2<30"\ 
+		"&& K1_IPCHI2_OWNPV>30 && K2_IPCHI2_OWNPV>30 && Xib_FDCHI2_OWNPV>1300 && Jpsi_FDCHI2_OWNPV>2000 && Jpsi_FDCHI2_ORIVX<5"
+
+variables {
+	Xib_PE{
+		nn Xib_E
+	}
+
+	Xib_ETA
+	Xib_M
+	Xib_P
+	Xib_PT
+	Xib_PX
+	Xib_PY
+	Xib_PZ
+	Xib_DTF_chi2[0]{
+		nn Xib_DTF_chi2
+	}  
+	Xib_DTF_ctau
+	Xib_DTF_M[0]{
+		nn Xib_DTF_M
+	}
+	Xib_DTF_nDOF[0]{
+		nn Xib_DTF_nDOF
+	}
+	Xib_ENDVERTEX_CHI2
+	Xib_FDCHI2_OWNPV
+	Xib_IPCHI2_OWNPV
+	Xib_LOKI_DIRA
+
+	Jpsi_PE{
+		nn Jpsi_E
+	}
+	Jpsi_M
+	Jpsi_P
+	Jpsi_PT
+	Jpsi_PX
+	Jpsi_PY
+	Jpsi_PZ
+	Jpsi_FDCHI2_OWNPV
+	Jpsi_FDCHI2_ORIVX
+	  
+	p_PE{
+		nn p_E
+	}
+	p_M
+	p_P
+	p_PT
+	p_PX
+	p_PY
+	p_PZ
+	p_ProbNNp  
+	p_ProbNNk
+	  
+	mup_PE{
+		nn mup_E
+	}
+	mup_M
+	mup_P
+	mup_PT
+	mup_PX
+	mup_PY
+	mup_PZ
+	mup_ProbNNmu  
+	  
+	mum_PE{
+		nn mum_E
+	}
+	mum_M
+	mum_P
+	mum_PT
+	mum_PX
+	mum_PY
+	mum_PZ
+	mum_ProbNNmu 
+
+	K1_PE{
+		nn K1_E
+	}
+	K1_M
+	K1_P
+	K1_PT
+	K1_PX
+	K1_PY
+	K1_PZ
+	K1_ProbNNk
+	K1_IPCHI2_OWNPV
+
+	K2_PE{
+		nn K2_E
+	}
+	K2_M
+	K2_P
+	K2_PT
+	K2_PX
+	K2_PY
+	K2_PZ
+	K2_ProbNNk
+	K2_IPCHI2_OWNPV
+
+	dummy_i {
+    		nn "Xib_love"
+    		tf "TLorentzVector(Xib_PX, Xib_PY, Xib_PZ, Xib_E)"
+  	}
+	
+	dummy {
+		nn Xib_Theta
+		tf "Xib_love.Theta()"
+	}
+
+	dummy_i {
+    		nn "mup_love"
+    		tf "TLorentzVector(mup_PX, mup_PY, mup_PZ, mup_E)"
+  	}
+	
+	dummy_i {
+    		nn "mum_love"
+    		tf "TLorentzVector(mum_PX, mum_PY, mum_PZ, mum_E)"
+  	}
+	
+	dummy_i {
+    		nn "K1_love"
+    		tf "TLorentzVector(K1_PX, K1_PY, K1_PZ, K1_E)"
+  	}
+	
+	dummy_i {
+    		nn "K2_love"
+    		tf "TLorentzVector(K2_PX, K2_PY, K2_PZ, K2_E)"
+  	}
+	
+	dummy_i {
+    		nn "p_love"
+    		tf "TLorentzVector(p_PX, p_PY, p_PZ, p_E)"
+  	}
+
+	dummy_i {
+    		nn "Vis_love"
+    		tf "mup_love+mum_love+p_love"
+  	}
+	
+	dummy {
+		nn KK_M
+		tf "(K1_love+K2_love).M()"
+	}
+	
+	dummy {
+		nn Vis_PZ
+		tf "Vis_love.Pz()"
+	}
+	
+	dummy {
+		nn Vis_M
+		tf "(mup_love+mum_love+p_love).M()"
+	}
+	
+	dummy {
+		nn Xib_P_rec
+		tf "Xib_M/Vis_M*abs(Vis_PZ)*sqrt(1+pow(tan(Xib_Theta),2))
+	}
+	
+	dummy_i {
+		nn "Xib_unive"
+		tf "Xib_love.Vect().Unit()"
+	}
+	
+	dummy_i {
+		nn "Xib_love_rec"
+		tf "TLorentzVector(Xib_P_rec*Xib_unive, sqrt(pow(Xib_M,2)+pow(Xib_P_rec,2))"
+	}
+	
+	dummy {
+		nn Xib_miss_M
+		tf "(Xib_love_rec-Vis_love).M()"
+	}
+	
+	dummy {
+		nn Xib_negl_P
+		tf "(Xib_PZ- Xib_M*Vis_PZ/Vis_M)*sqrt(1+pow(tan(Xib_Theta),2))"
+	}
+}
+	  
+	  
+	  
+	  
